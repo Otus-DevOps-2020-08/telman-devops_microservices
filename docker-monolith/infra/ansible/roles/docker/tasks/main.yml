@@ -1,0 +1,87 @@
+---
+# tasks file for docker
+- name: Docker | Unistall old version of docker
+  apt:
+    name:
+      - docker
+      - docker-py
+      - docker-engine
+      - docker.io
+    state: absent
+  tags: install
+
+- name: Cache update
+  apt:
+    update_cache: yes
+
+- name: Docker | Install requirements
+  package:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg-agent
+      - software-properties-common
+    state: present
+  tags: install
+
+- name: Docker | Add apt key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+  tags: install
+
+- name: Docker | Add repository
+  apt_repository:
+    repo: "deb https://download.docker.com/linux/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} stable"
+    state: present
+    update_cache: yes
+  tags: install
+
+- name: Docker | Prepare docker configuration directory
+  file:
+    path: /etc/docker
+    state: directory
+    mode: 0700
+  tags: install
+
+- name: Docker | Install docker latest
+  apt:
+    name: "docker-ce"
+    state: latest
+  notify: docker start
+  when: docker_version is not defined
+  tags: install
+
+- name: Docker | Install docker
+  apt:
+    name: "docker-ce={{ docker_version }}"
+    state: present
+  notify: docker start
+  when: docker_version is defined
+  tags: install
+
+- name: Docker-compose | Install pip
+  apt:
+    name:
+      - "python-pip"
+      - "python3-pip"
+    state: present
+  tags: install
+
+- name: Docker-compose | Install docker-compose
+  apt:
+    name: docker-compose
+    state: present
+  tags: install
+
+- name: Docker | Add docker_user user to docker group
+  user:
+    name: "{{ docker_user }}"
+    group: docker
+  tags: install
+
+- name: Show info about the env
+  debug:
+    msg: "This host is in {{ env }} environment"
+  tags: install

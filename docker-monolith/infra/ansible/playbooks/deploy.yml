@@ -1,0 +1,17 @@
+---
+- name: docker install
+  hosts: docker
+  become: true
+
+  roles:
+    - docker
+
+  tasks:
+    - name: Install & start Reddit
+      docker_container:
+        name: reddit
+        image: 870414/otus-reddit:1.0
+        state: started
+        restart: yes
+        ports:
+          - "80:9292"

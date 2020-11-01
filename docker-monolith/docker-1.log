@@ -1,0 +1,26 @@
+REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
+telman/ubuntu-tmp-file   latest              178a8a19cca4        48 seconds ago      63.2MB
+ubuntu                   18.04               56def654ec22        4 weeks ago         63.2MB
+hello-world              latest              bf756fb1ae65        10 months ago       13.3kB
+
+
+docker inspect <u_container_id> VS docker inspect <u_image_id>
+
+container:
+1. Предоставляет больше данных
+2. Есть pid процесса
+3. Поднялась виртуальная сеть
+
+yc compute instance create \
+  --name docker-host \
+  --zone ru-central1-a \
+  --network-interface subnet-name=micro-ru-central1-a,nat-ip-version=ipv4 \
+  --create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1804-lts,size=15 \
+  --ssh-key ~/.ssh/id_rsa.pub
+
+ docker-machine create \
+ --driver generic \
+ --generic-ip-address=178.154.227.106 \
+ --generic-ssh-user yc-user \
+ --generic-ssh-key ~/.ssh/id_rsa \
+ docker-host
