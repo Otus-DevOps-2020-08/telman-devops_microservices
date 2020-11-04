@@ -12,6 +12,7 @@ telman-devops microservices repository
 ## Выполнено ДЗ 13
 
 > Создан Docker-хост в Yandex Cloud
+
 ```
 $ docker-machine create \
   --driver generic \
