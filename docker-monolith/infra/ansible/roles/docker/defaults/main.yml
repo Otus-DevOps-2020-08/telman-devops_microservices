@@ -1,0 +1,4 @@
+---
+# defaults file for docker
+env: local
+docker_user: ubuntu
