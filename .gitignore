@@ -22,3 +22,5 @@ vault.key
 *.tfvars
 .terraform/
 terraform_key.json
+
+.env
