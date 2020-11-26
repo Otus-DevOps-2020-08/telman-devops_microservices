@@ -64,7 +64,6 @@
 - name: Docker-compose | Install pip
   apt:
     name:
-      - "python-pip"
       - "python3-pip"
     state: present
   tags: install

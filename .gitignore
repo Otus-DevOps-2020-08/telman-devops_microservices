@@ -14,6 +14,7 @@ key.json
 *.retry
 jdauphant.nginx
 vault.key
+*.pem
 
 # Terraform local & sensative files
 *.tfstate

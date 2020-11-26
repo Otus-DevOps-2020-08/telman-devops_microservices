@@ -3,5 +3,8 @@
   hosts: docker
   become: true
 
+  pre_tasks:
+    - ping:
+
   roles:
     - docker
