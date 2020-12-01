@@ -72,3 +72,13 @@ docker network connect front_net comment
 ```
 docker-compose --project-name $NAME up -d
 ```
+
+## Выполнено ДЗ 19
+
+1. Настроен Gitlab-server
+
+2. Создан gitlab-runner
+
+3. Описан .gitlab-ci.yml
+
+4. Сборка и деплой reddit в gitlab registry
