@@ -36,14 +36,22 @@ docker volume create reddit_db
 
 ## Выполнено ДЗ 18
 
-> Бал поднят Docker-хост в AWS
+> Поднять Docker-хост в AWS
 
 ```
+url: https://blog.scottlowe.org/2016/03/22/using-docker-machine-with-aws/
+
 docker-machine create -d amazonec2 \
---amazonec2-region us-west-2 \
---amazonec2-instance-type "t2.micro" \
+--amazonec2-region eu-central-1 \
+--amazonec2-instance-type "t2.small" \
 --amazonec2-ssh-keypath ~/.ssh/id_rsa \
 docker-host
+```
+
+> Остановить Docker-хост в AWS
+
+```
+docker-machine stop <name>
 ```
 
 > Создана docker сеть,
@@ -82,3 +90,8 @@ docker-compose --project-name $NAME up -d
 3. Описан .gitlab-ci.yml
 
 4. Сборка и деплой reddit в gitlab registry
+
+## Выполнено ДЗ 20
+
+1. Запустили Prometheus
+2. Настроили мониторинг наших микросервисов
