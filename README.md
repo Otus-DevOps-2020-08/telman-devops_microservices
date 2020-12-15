@@ -43,15 +43,19 @@ url: https://blog.scottlowe.org/2016/03/22/using-docker-machine-with-aws/
 
 docker-machine create -d amazonec2 \
 --amazonec2-region eu-central-1 \
---amazonec2-instance-type "t2.small" \
+--amazonec2-instance-type "t2.medium" \
 --amazonec2-ssh-keypath ~/.ssh/id_rsa \
-docker-host
+logging
+
+eval $(docker-machine env logging)
 ```
 
 > Остановить Docker-хост в AWS
 
 ```
-docker-machine stop <name>
+docker-machine rm logging
+
+eval $(docker-machine env --unset)
 ```
 
 > Создана docker сеть,
