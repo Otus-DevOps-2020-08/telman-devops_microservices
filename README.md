@@ -104,7 +104,7 @@ docker-compose --project-name $NAME up -d
 
 1. Подготовили окружения docker-machine
 2. Настроили Elastic Stack: Fluentd -> ElasticSearch -> Kibana
-3. Сбор структурированных логов с помошью Fluentd
-4. Визаулизация с помощью Kibana
+3. Сбор структурированных логов с помощью Fluentd
+4. Визуализация с помощью Kibana
 5. Сбор неструктурированных логов и парсинг с помощью Grok-шаблонов
 6. Распределенный трейсинг Zipkin
