@@ -43,15 +43,19 @@ url: https://blog.scottlowe.org/2016/03/22/using-docker-machine-with-aws/
 
 docker-machine create -d amazonec2 \
 --amazonec2-region eu-central-1 \
---amazonec2-instance-type "t2.small" \
+--amazonec2-instance-type "t2.medium" \
 --amazonec2-ssh-keypath ~/.ssh/id_rsa \
-docker-host
+logging
+
+eval $(docker-machine env logging)
 ```
 
 > Остановить Docker-хост в AWS
 
 ```
-docker-machine stop <name>
+docker-machine rm logging
+
+eval $(docker-machine env --unset)
 ```
 
 > Создана docker сеть,
@@ -95,3 +99,12 @@ docker-compose --project-name $NAME up -d
 
 1. Запустили Prometheus
 2. Настроили мониторинг наших микросервисов
+
+## Выполнено ДЗ 21
+
+1. Подготовили окружения docker-machine
+2. Настроили Elastic Stack: Fluentd -> ElasticSearch -> Kibana
+3. Сбор структурированных логов с помощью Fluentd
+4. Визуализация с помощью Kibana
+5. Сбор неструктурированных логов и парсинг с помощью Grok-шаблонов
+6. Распределенный трейсинг Zipkin
