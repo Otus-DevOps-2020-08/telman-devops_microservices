@@ -13,11 +13,16 @@ spec:
       component: ui
   template:
     metadata:
-      name: ui-pod
+      name: ui
       labels:
         app: reddit
         component: ui
     spec:
       containers:
-      - image: 870414/ui
+      - image: 870414/ui:logging
         name: ui
+        env:
+        - name: ENV
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace

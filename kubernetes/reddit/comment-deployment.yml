@@ -19,7 +19,7 @@ spec:
         component: comment
     spec:
       containers:
-      - image: 870414/comment
+      - image: 870414/comment:logging
         name: comment
         env:
           - name: COMMENT_DATABASE_HOST

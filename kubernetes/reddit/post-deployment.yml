@@ -4,22 +4,22 @@ metadata:
   name: post
   labels:
     app: reddit
-    component: comment
+    component: post
 spec:
   replicas: 3
   selector:
     matchLabels:
       app: reddit
-      component: comment
+      component: post
   template:
     metadata:
       name: post
       labels:
         app: reddit
-        component: comment
+        component: post
     spec:
       containers:
-      - image: 870414/post
+      - image: 870414/post:logging
         name: post
         env:
           - name: POST_DATABASE_HOST
