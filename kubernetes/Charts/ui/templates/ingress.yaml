@@ -1,0 +1,15 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-{{ .Chart.Name }}
+  annotations:
+    kubernetes.io/ingress.allow-http: "false"
+spec:
+  tls:
+  - hosts:
+      - 130.193.38.104
+    secretName: ui-ingress
+  backend:
+    serviceName: {{ .Release.Name }}-{{ .Chart.Name }}
+    servicePort: {{ .Values.service.externalPort }}
