@@ -1,6 +1,6 @@
-name: ui
+name: comment
 version: 1.0.0
-description: OTUS reddit application UI
+description: OTUS reddit comment
 maintainers:
   - name: Telman
     email: telman.devops@gmail.com
