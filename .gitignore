@@ -1,5 +1,6 @@
 # PhpStorm IDE
 .idea/
+lecture/
 
 # pre-commit-config
 .pre-commit-config.yaml
