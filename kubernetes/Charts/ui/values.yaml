@@ -3,6 +3,14 @@ service:
   internalPort: 9292
   externalPort: 9292
 
+ingress:
+  class: nginx
+
 image:
   repository: 870414/ui
   tag: logging
+
+postHost:
+postPort:
+commentHost:
+commentPort:
